@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza Paradise - Premium Italian Pizza</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #d32f2f;
+            --primary-hover: #b71c1c;
+            --accent: #ffb300;
+            --accent-hover: #ffa000;
+            --dark-bg: #121212;
+            --dark-card: #1e1e1e;
+            --light-bg: #f8f9fa;
+            --light-card: #ffffff;
+            --text-light: #212529;
+            --text-muted: #6c757d;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background: var(--light-bg);
+            color: var(--text-light);
+            transition: var(--transition);
+            line-height: 1.6;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: var(--primary);
+            padding: 15px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 800;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.85);
+            font-weight: 600;
+            font-size: 15px;
+            transition: var(--transition);
+            padding: 8px 12px;
+            border-radius: 6px;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: white;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            padding: 6px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+
+        .lang-btn:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+
+        .hero {
+            height: 85vh;
+            background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+                        url('https://images.unsplash.com/photo-1513104890138-7c749659a591');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 64px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .hero-content p {
+            font-size: 22px;
+            margin-bottom: 35px;
+            font-weight: 400;
+            color: #f8f9fa;
+        }
+
+        .btn {
+            padding: 16px 36px;
+            background: var(--accent);
+            color: #111;
+            border: none;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            border-radius: 30px;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(255, 179, 0, 0.4);
+        }
+
+        .btn:hover {
+            background: white;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255,255,255,0.4);
+        }
+
+
+        .section-title {
+            text-align: center;
+            margin: 70px 0 40px;
+            font-size: 38px;
+            font-weight: 800;
+            color: var(--primary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            margin: 12px auto 0;
+            border-radius: 2px;
+        }
+
+
+        .features {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--light-card);
+            padding: 40px 30px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 15px;
+        }
+
+        .popular {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 40px 60px;
+        }
+
+        .pizza-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+        }
+
+        .pizza {
+            background: var(--light-card);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .pizza:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .pizza img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .pizza:hover img {
+            transform: scale(1.05);
+        }
+
+        .pizza-content {
+            padding: 25px;
+        }
+
+        .pizza-content h3 {
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        .pizza-price {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .pizza-content button {
+            width: 100%;
+            padding: 14px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .pizza-content button:hover {
+            background: var(--primary-hover);
+        }
+
+
+        .stats {
+            background: linear-gradient(135deg, var(--primary), #a81d1d);
+            color: white;
+            padding: 60px 10%;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            text-align: center;
+            margin: 60px 0;
+            box-shadow: inset 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .stat h2 {
+            font-size: 46px;
+            font-weight: 800;
+            color: var(--accent);
+        }
+
+        .stat p {
+            font-size: 16px;
+            font-weight: 600;
+            opacity: 0.9;
+        }
+
+        .review-section {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 40px 60px;
+        }
+
+        .reviews {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .review {
+            background: var(--light-card);
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--accent);
+        }
+
+        .stars {
+            color: var(--accent);
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .review-text {
+            font-style: italic;
+            color: var(--text-light);
+        }
+
+        .newsletter {
+            background: #1a1a1a;
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .newsletter h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+
+        .input-group {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto 30px;
+            border-radius: 30px;
+            overflow: hidden;
+            background: white;
+            padding: 5px;
+        }
+
+        .newsletter input {
+            padding: 15px 20px;
+            border: none;
+            flex-grow: 1;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .newsletter button.sub-btn {
+            padding: 0 25px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            font-weight: 700;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter button.sub-btn:hover {
+            background: var(--primary-hover);
+        }
+
+        .mode-btn {
+            background: transparent;
+            color: #aaa;
+            border: 1px solid #444;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .mode-btn:hover {
+            color: white;
+            border-color: white;
+        }
+
+        footer {
+            background: #0b0b0b;
+            color: #aaa;
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid #222;
+        }
+
+        footer h3 {
+            color: white;
+            margin-bottom: 10px;
+            font-size: 22px;
+        }
+
+        /* Dark Mode Extensions */
+        body.dark-mode {
+            background: var(--dark-bg);
+            color: #f8f9fa;
+        }
+
+        body.dark-mode .card,
+        body.dark-mode .pizza,
+        body.dark-mode .review {
+            background: var(--dark-card);
+            border-color: #2a2a2a;
+        }
+
+        body.dark-mode .card h3, 
+        body.dark-mode .review-text {
+            color: white;
+        }
+
+        body.dark-mode .card p {
+            color: #aaa;
+        }
+
+
+        @media (max-width: 992px) {
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+                width: 100%;
+            }
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .hero-content h1 {
+                font-size: 42px;
+            }
+            .hero-content p {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="index.html" class="logo">🍕 Pizza Paradise</a>
+        <div class="nav-container">
+            <ul>
+                <li><a href="index.html" class="active" data-key="nav-home">Home</a></li>
+                <li><a href="about.html" data-key="nav-about">About</a></li>
+                <li><a href="menu.html" data-key="nav-menu">Menu</a></li>
+                <li><a href="offers.html" data-key="nav-offers">Offers</a></li>
+                <li><a href="location.html" data-key="nav-location">Location</a></li>
+                <li><a href="contact.html" data-key="nav-contact">Contact</a></li>
+                <li><a href="login.html" data-key="nav-login">Login</a></li>
+                <li><a href="order.html" data-key="nav-order">Order</a></li>
+            </ul>
+            <button class="lang-btn" onclick="toggleLanguage()">Shqip</button>
+        </div>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1 data-key="hero-title">Best Pizza In Town</h1>
+        <p data-key="hero-desc">Fresh Ingredients. Authentic Taste. Fast Delivery.</p>
+        <button class="btn" onclick="orderNow()" data-key="hero-btn">Order Now</button>
+    </div>
+</section>
+
+<h2 class="section-title" data-key="title-why">Why Choose Us?</h2>
+
+<section class="features">
+    <div class="card">
+        <h3 data-key="feat1-title">🔥 Fresh Ingredients</h3>
+        <p data-key="feat1-desc">Only premium ingredients used daily.</p>
+    </div>
+    <div class="card">
+        <h3 data-key="feat2-title">🚚 Fast Delivery</h3>
+        <p data-key="feat2-desc">Delivery within 30 minutes guaranteed.</p>
+    </div>
+    <div class="card">
+        <h3 data-key="feat3-title">⭐ Top Rated</h3>
+        <p data-key="feat3-desc">Thousands of highly satisfied customers.</p>
+    </div>
+</section>
+
+<h2 class="section-title" data-key="title-popular">Popular Pizzas</h2>
+
+<section class="popular">
+    <div class="pizza-grid">
+        <div class="pizza">
+            <img src="https://images.unsplash.com/photo-1604382354936-07c5d9983bd3" alt="Pepperoni Pizza">
+            <div class="pizza-content">
+                <h3 data-key="pizza1-name">Pepperoni Pizza</h3>
+                <div class="pizza-price">$12.99</div>
+                <button onclick="addToCart('Pepperoni Pizza')" data-key="add-cart">Add To Cart</button>
+            </div>
+        </div>
+        <div class="pizza">
+            <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591" alt="Cheese Pizza">
+            <div class="pizza-content">
+                <h3 data-key="pizza2-name">Cheese Pizza</h3>
+                <div class="pizza-price">$10.99</div>
+                <button onclick="addToCart('Cheese Pizza')" data-key="add-cart">Add To Cart</button>
+            </div>
+        </div>
+        <div class="pizza">
+            <img src="https://images.unsplash.com/photo-1594007654729-407eedc4be65" alt="BBQ Chicken Pizza">
+            <div class="pizza-content">
+                <h3 data-key="pizza3-name">BBQ Chicken Pizza</h3>
+                <div class="pizza-price">$15.99</div>
+                <button onclick="addToCart('BBQ Chicken Pizza')" data-key="add-cart">Add To Cart</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="stats">
+    <div class="stat">
+        <h2>10K+</h2>
+        <p data-key="stat-cust">Customers</p>
+    </div>
+    <div class="stat">
+        <h2>50+</h2>
+        <p data-key="stat-pizzas">Pizzas</p>
+    </div>
+    <div class="stat">
+        <h2>15</h2>
+        <p data-key="stat-years">Years</p>
+    </div>
+    <div class="stat">
+        <h2>24/7</h2>
+        <p data-key="stat-support">Support</p>
+    </div>
+</section>
+
+<h2 class="section-title" data-key="title-reviews">Customer Reviews</h2>
+
+<section class="review-section">
+    <div class="reviews">
+        <div class="review">
+            <div class="stars">★★★★★</div>
+            <p class="review-text" data-key="rev1">"Best pizza I have ever tasted."</p>
+        </div>
+        <div class="review">
+            <div class="stars">★★★★★</div>
+            <p class="review-text" data-key="rev2">"Amazing delivery speed and quality."</p>
+        </div>
+        <div class="review">
+            <div class="stars">★★★★★</div>
+            <p class="review-text" data-key="rev3">"My family orders every weekend."</p>
+        </div>
+    </div>
+</section>
+
+<section class="newsletter">
+    <h2 data-key="news-title">Subscribe For Exclusive Offers</h2>
+    <div class="input-group">
+        <input type="email" id="email" placeholder="Enter Your Email Address">
+        <button class="sub-btn" onclick="subscribe()" data-key="news-btn">Subscribe</button>
+    </div>
+    <button class="mode-btn" onclick="toggleDarkMode()" data-key="dark-btn">Toggle Dark Mode</button>
+</section>
+
+<footer>
+    <h3>Pizza Paradise © 2026</h3>
+    <p data-key="footer-desc">Fresh Pizza. Great Taste. Fast Delivery.</p>
+</footer>
+
+<script>
+
+    const translations = {
+        en: {
+            "nav-home": "Home",
+            "nav-about": "About",
+            "nav-menu": "Menu",
+            "nav-offers": "Offers",
+            "nav-location": "Location",
+            "nav-contact": "Contact",
+            "nav-login": "Login",
+            "nav-order": "Order",
+            "hero-title": "Best Pizza In Town",
+            "hero-desc": "Fresh Ingredients. Authentic Taste. Fast Delivery.",
+            "hero-btn": "Order Now",
+            "title-why": "Why Choose Us?",
+            "feat1-title": "🔥 Fresh Ingredients",
+            "feat1-desc": "Only premium ingredients used daily.",
+            "feat2-title": "🚚 Fast Delivery",
+            "feat2-desc": "Delivery within 30 minutes guaranteed.",
+            "feat3-title": "⭐ Top Rated",
+            "feat3-desc": "Thousands of highly satisfied customers.",
+            "title-popular": "Popular Pizzas",
+            "pizza1-name": "Pepperoni Pizza",
+            "pizza2-name": "Cheese Pizza",
+            "pizza3-name": "BBQ Chicken Pizza",
+            "add-cart": "Add To Cart",
+            "stat-cust": "Customers",
+            "stat-pizzas": "Pizzas",
+            "stat-years": "Years Experience",
+            "stat-support": "Support",
+            "title-reviews": "Customer Reviews",
+            "rev1": "\"Best pizza I have ever tasted.\"",
+            "rev2": "\"Amazing delivery speed and quality.\"",
+            "rev3": "\"My family orders every weekend.\"",
+            "news-title": "Subscribe For Exclusive Offers",
+            "news-btn": "Subscribe",
+            "dark-btn": "Toggle Dark Mode",
+            "footer-desc": "Fresh Pizza. Great Taste. Fast Delivery.",
+            "alert-cart": " added to cart!",
+            "alert-empty-email": "Please enter a valid email address",
+            "alert-sub": "Subscribed Successfully!"
+        },
+        sq: {
+            "nav-home": "Ballina",
+            "nav-about": "Rreth Nesh",
+            "nav-menu": "Menuja",
+            "nav-offers": "Ofertat",
+            "nav-location": "Lokacioni",
+            "nav-contact": "Kontakt",
+            "nav-login": "Kyçuni",
+            "nav-order": "Porosit",
+            "hero-title": "Pica më e Mirë në Qytet",
+            "hero-desc": "Përbërës të Freskët. Shije Autentike. Dërgesë e Shpejtë.",
+            "hero-btn": "Porosit Tani",
+            "title-why": "Pse të na Zgjidhni Ne?",
+            "feat1-title": "🔥 Përbërës të Freskët",
+            "feat1-desc": "Vetëm përbërës premium të përdorur çdo ditë.",
+            "feat2-title": "🚚 Dërgesë e Shpejtë",
+            "feat2-desc": "Dërgesë e garantuar brenda 30 minutave.",
+            "feat3-title": "⭐ Më të Vlerësuarit",
+            "feat3-desc": "Mijëra klientë plotësisht të kënaqur.",
+            "title-popular": "Picat më Popullore",
+            "pizza1-name": "Pica Peperoni",
+            "pizza2-name": "Pica me Djathë",
+            "pizza3-name": "Pica BBQ Pulë",
+            "add-cart": "Shto në Shportë",
+            "stat-cust": "Klientë",
+            "stat-pizzas": "Pica",
+            "stat-years": "Vite Përvojë",
+            "stat-support": "Mbështetje",
+            "title-reviews": "Vlerësimet e Klientëve",
+            "rev1": "\"Pica më e mirë që kam shijuar ndonjëherë.\"",
+            "rev2": "\"Shpejtësi dhe cilësi e mahnitshme e dërgesës.\"",
+            "rev3": "\"Familja ime porosit çdo fundjavë.\"",
+            "news-title": "Regjistrohuni për Oferta Ekskluzive",
+            "news-btn": "Regjistrohu",
+            "dark-btn": "Ndrysho Pamjen",
+            "footer-desc": "Pica e Freskët. Shije e Shkëlqyer. Dërgesë e Shpejtë.",
+            "alert-cart": " u shtua në shportë!",
+            "alert-empty-email": "Ju lutem vendosni një email të vlefshëm",
+            "alert-sub": "U regjistruat me sukses!"
+        }
+    };
+
+    let currentLang = 'en';
+    let cart = [];
+
+    function toggleLanguage() {
+        currentLang = currentLang === 'en' ? 'sq' : 'en';
+        document.querySelector('.lang-btn').textContent = currentLang === 'en' ? 'Shqip' : 'English';
+        document.documentElement.lang = currentLang;
+        
+
+        document.querySelectorAll('[data-key]').forEach(elem => {
+            const key = elem.getAttribute('data-key');
+            if (translations[currentLang][key]) {
+                if (elem.tagName === 'INPUT') {
+                    elem.placeholder = translations[currentLang][key];
+                } else {
+                    elem.textContent = translations[currentLang][key];
+                }
+            }
+        });
+    }
+
+    function addToCart(itemNameKey) {
+        // Find mapped item translation
+        let resolvedName = currentLang === 'sq' ? translations['sq'][itemNameKey] || itemNameKey : itemNameKey;
+        cart.push(resolvedName);
+        alert(resolvedName + translations[currentLang]["alert-cart"]);
+    }
+
+    function subscribe() {
+        const email = document.getElementById("email").value;
+        if (email === "") {
+            alert(translations[currentLang]["alert-empty-email"]);
+            return;
+        }
+        alert(translations[currentLang]["alert-sub"]);
+        document.getElementById("email").value = "";
+    }
+
+    function toggleDarkMode() {
+        document.body.classList.toggle("dark-mode");
+    }
+
+    function orderNow() {
+        window.location.href = "order.html";
+    }
+</script>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#c62828">
+</body>
+</html>
