@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza Paradise - About Our Heritage</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #d32f2f;
+            --primary-hover: #b71c1c;
+            --accent: #ffb300;
+            --accent-hover: #ffa000;
+            --dark-bg: #121212;
+            --dark-card: #1e1e1e;
+            --light-bg: #f8f9fa;
+            --light-card: #ffffff;
+            --text-light: #212529;
+            --text-muted: #6c757d;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background: var(--light-bg);
+            color: var(--text-light);
+            transition: var(--transition);
+            line-height: 1.6;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: var(--primary);
+            padding: 15px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 800;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.85);
+            font-weight: 600;
+            font-size: 15px;
+            transition: var(--transition);
+            padding: 8px 12px;
+            border-radius: 6px;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: white;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            padding: 6px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+
+        .lang-btn:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        .hero {
+            height: 45vh;
+            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+                        url('https://images.unsplash.com/photo-1513104890138-7c749659a591');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.4);
+        }
+
+        section {
+            padding: 80px 5%;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 38px;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 45px;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            margin: 12px auto 0;
+            border-radius: 2px;
+        }
+
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-container img {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.08);
+            transition: var(--transition);
+        }
+
+        .about-container img:hover {
+            transform: scale(1.02);
+        }
+
+        .about-text p {
+            margin-bottom: 22px;
+            font-size: 16px;
+            color: var(--text-muted);
+        }
+
+        .mission {
+            background: var(--light-card);
+            padding: 45px;
+            margin-top: 50px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            border-left: 6px solid var(--primary);
+        }
+
+        .mission h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+
+        .timeline {
+            position: relative;
+            margin-top: 40px;
+        }
+
+        .timeline-item {
+            background: var(--light-card);
+            padding: 30px;
+            margin-bottom: 25px;
+            border-left: 6px solid var(--accent);
+            border-radius: 0 16px 16px 0;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.03);
+            transition: var(--transition);
+        }
+
+        .timeline-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.07);
+        }
+
+        .timeline-item h3 {
+            font-size: 22px;
+            color: var(--primary);
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .values, .team {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .value-box, .member {
+            background: var(--light-card);
+            padding: 35px 25px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.02);
+        }
+
+        .value-box:hover, .member:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.09);
+        }
+
+        .value-box h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: var(--text-light);
+        }
+
+        .value-box p {
+            color: var(--text-muted);
+            font-size: 15px;
+        }
+
+        .member img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 4px solid #f0f0f0;
+            transition: var(--transition);
+        }
+
+        .member:hover img {
+            border-color: var(--accent);
+        }
+
+        .member h3 {
+            font-size: 20px;
+            margin-bottom: 6px;
+        }
+
+        .member p {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .stats-section {
+            padding: 0;
+            max-width: 100%;
+            background: linear-gradient(135deg, var(--primary), #a81d1d);
+        }
+
+        .stats {
+            max-width: 1300px;
+            margin: 0 auto;
+            color: white;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            padding: 60px 5%;
+            text-align: center;
+        }
+
+        .stat h2 {
+            font-size: 46px;
+            font-weight: 800;
+            color: var(--accent);
+        }
+
+        .stat p {
+            font-size: 15px;
+            font-weight: 600;
+            opacity: 0.9;
+        }
+
+        .theme-control-box {
+            text-align: center;
+            background: #1a1a1a;
+            padding: 50px 20px;
+        }
+
+        .mode-btn {
+            background: transparent;
+            color: #aaa;
+            border: 1px solid #444;
+            padding: 12px 28px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .mode-btn:hover {
+            color: white;
+            border-color: white;
+        }
+
+        footer {
+            background: #0b0b0b;
+            color: #aaa;
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid #222;
+        }
+
+        footer h3 {
+            color: white;
+            margin-bottom: 10px;
+            font-size: 22px;
+        }
+
+
+        body.dark {
+            background: var(--dark-bg);
+            color: #f8f9fa;
+        }
+
+        body.dark .mission,
+        body.dark .timeline-item,
+        body.dark .member,
+        body.dark .value-box {
+            background: var(--dark-card);
+            border-color: #2a2a2a;
+        }
+
+        body.dark .member img {
+            border-color: #333;
+        }
+
+        body.dark .mission h2,
+        body.dark .value-box h3,
+        body.dark .member h3 {
+            color: white;
+        }
+
+        body.dark .about-text p,
+        body.dark .value-box p {
+            color: #aaa;
+        }
+
+        /* Responsive Breakpoints */
+        @media(max-width: 992px) {
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 35px;
+            }
+        }
+
+        @media(max-width: 768px) {
+            .about-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+                width: 100%;
+            }
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .hero h1 {
+                font-size: 38px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="index.html" class="logo">🍕 Pizza Paradise</a>
+        <div class="nav-container">
+            <ul>
+                <li><a href="index.html" data-key="nav-home">Home</a></li>
+                <li><a href="about.html" class="active" data-key="nav-about">About</a></li>
+                <li><a href="menu.html" data-key="nav-menu">Menu</a></li>
+                <li><a href="offers.html" data-key="nav-offers">Offers</a></li>
+                <li><a href="location.html" data-key="nav-location">Location</a></li>
+                <li><a href="contact.html" data-key="nav-contact">Contact</a></li>
+                <li><a href="login.html" data-key="nav-login">Login</a></li>
+                <li><a href="order.html" data-key="nav-order">Order</a></li>
+            </ul>
+            <button class="lang-btn" onclick="toggleLanguage()">Shqip</button>
+        </div>
+    </nav>
+</header>
+
+<section class="hero">
+    <h1 data-key="hero-heading">About Pizza Paradise</h1>
+</section>
+
+<section>
+    <h2 class="section-title" data-key="title-story">Our Story</h2>
+    <div class="about-container">
+        <div>
+            <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591" alt="Our Workspace Heritage">
+        </div>
+        <div class="about-text">
+            <p data-key="story-p1">Pizza Paradise started with a simple dream: bringing authentic Italian pizza to everyone.</p>
+            <p data-key="story-p2">Since opening our first restaurant, we have focused on fresh ingredients, quality service, and unforgettable flavor.</p>
+            <p data-key="story-p3">Today we serve thousands of customers and continue expanding while maintaining our commitment to excellence.</p>
+        </div>
+    </div>
+
+    <div class="mission">
+        <h2 data-key="mission-title">Our Mission</h2>
+        <p data-key="mission-desc">To provide the highest quality pizza experience through fresh ingredients, innovative recipes, and exceptional customer service.</p>
+    </div>
+</section>
+
+<section style="background: rgba(0,0,0,0.015);">
+    <h2 class="section-title" data-key="title-history">Company History</h2>
+    <div class="timeline">
+        <div class="timeline-item">
+            <h3>2010</h3>
+            <p data-key="hist-1">Pizza Paradise was founded.</p>
+        </div>
+        <div class="timeline-item">
+            <h3>2014</h3>
+            <p data-key="hist-2">Reached 10,000 customers served.</p>
+        </div>
+        <div class="timeline-item">
+            <h3>2018</h3>
+            <p data-key="hist-3">Opened multiple new branches.</p>
+        </div>
+        <div class="timeline-item">
+            <h3>2022</h3>
+            <p data-key="hist-4">Launched online ordering system.</p>
+        </div>
+        <div class="timeline-item">
+            <h3>2026</h3>
+            <p data-key="hist-5">Recognized as one of the top pizza brands.</p>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h2 class="section-title" data-key="title-values">Our Values</h2>
+    <div class="values">
+        <div class="value-box">
+            <h3 data-key="val1-t">Quality</h3>
+            <p data-key="val1-d">Only premium ingredients.</p>
+        </div>
+        <div class="value-box">
+            <h3 data-key="val2-t">Customer First</h3>
+            <p data-key="val2-d">Your satisfaction matters.</p>
+        </div>
+        <div class="value-box">
+            <h3 data-key="val3-t">Innovation</h3>
+            <p data-key="val3-d">New flavors and recipes.</p>
+        </div>
+        <div class="value-box">
+            <h3 data-key="val4-t">Integrity</h3>
+            <p data-key="val4-d">Honesty and transparency.</p>
+        </div>
+    </div>
+</section>
+
+<section style="background: rgba(0,0,0,0.015);">
+    <h2 class="section-title" data-key="title-team">Meet Our Team</h2>
+    <div class="team">
+        <div class="member">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Marco Rossi">
+            <h3>Marco Rossi</h3>
+            <p data-key="role-1">Founder & CEO</p>
+        </div>
+        <div class="member">
+            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sophia Green">
+            <h3>Sophia Green</h3>
+            <p data-key="role-2">Operations Manager</p>
+        </div>
+        <div class="member">
+            <img src="https://randomuser.me/api/portraits/men/56.jpg" alt="Antonio Clark">
+            <h3>Antonio Clark</h3>
+            <p data-key="role-3">Master Chef</p>
+        </div>
+    </div>
+</section>
+
+<div class="stats-section">
+    <div class="stats">
+        <div class="stat">
+            <h2>15+</h2>
+            <p data-key="stat-1">Years Experience</p>
+        </div>
+        <div class="stat">
+            <h2>50+</h2>
+            <p data-key="stat-2">Pizza Recipes</p>
+        </div>
+        <div class="stat">
+            <h2>10K+</h2>
+            <p data-key="stat-3">Happy Customers</p>
+        </div>
+        <div class="stat">
+            <h2>20+</h2>
+            <p data-key="stat-4">Awards Won</p>
+        </div>
+    </div>
+</div>
+
+<div class="theme-control-box">
+    <button class="mode-btn" onclick="toggleDarkMode()" data-key="dark-btn">Toggle Dark Mode</button>
+</div>
+
+<footer>
+    <h3>Pizza Paradise © 2026</h3>
+    <p data-key="footer-desc">Fresh Pizza • Fast Delivery • Amazing Taste</p>
+</footer>
+
+<script>
+
+    const translations = {
+        en: {
+            "nav-home": "Home",
+            "nav-about": "About",
+            "nav-menu": "Menu",
+            "nav-offers": "Offers",
+            "nav-location": "Location",
+            "nav-contact": "Contact",
+            "nav-login": "Login",
+            "nav-order": "Order",
+            "hero-heading": "About Pizza Paradise",
+            "title-story": "Our Story",
+            "story-p1": "Pizza Paradise started with a simple dream: bringing authentic Italian pizza to everyone.",
+            "story-p2": "Since opening our first restaurant, we have focused on fresh ingredients, quality service, and unforgettable flavor.",
+            "story-p3": "Today we serve thousands of customers and continue expanding while maintaining our commitment to excellence.",
+            "mission-title": "Our Mission",
+            "mission-desc": "To provide the highest quality pizza experience through fresh ingredients, innovative recipes, and exceptional customer service.",
+            "title-history": "Company History",
+            "hist-1": "Pizza Paradise was founded.",
+            "hist-2": "Reached 10,000 customers served.",
+            "hist-3": "Opened multiple new branches.",
+            "hist-4": "Launched online ordering system.",
+            "hist-5": "Recognized as one of the top pizza brands.",
+            "title-values": "Our Values",
+            "val1-t": "Quality",
+            "val1-d": "Only premium ingredients.",
+            "val2-t": "Customer First",
+            "val2-d": "Your satisfaction matters.",
+            "val3-t": "Innovation",
+            "val3-d": "New flavors and recipes.",
+            "val4-t": "Integrity",
+            "val4-d": "Honesty and transparency.",
+            "title-team": "Meet Our Team",
+            "role-1": "Founder & CEO",
+            "role-2": "Operations Manager",
+            "role-3": "Master Chef",
+            "stat-1": "Years Experience",
+            "stat-2": "Pizza Recipes",
+            "stat-3": "Happy Customers",
+            "stat-4": "Awards Won",
+            "dark-btn": "Toggle Dark Mode",
+            "footer-desc": "Fresh Pizza • Fast Delivery • Amazing Taste"
+        },
+        sq: {
+            "nav-home": "Ballina",
+            "nav-about": "Rreth Nesh",
+            "nav-menu": "Menuja",
+            "nav-offers": "Ofertat",
+            "nav-location": "Lokacioni",
+            "nav-contact": "Kontakt",
+            "nav-login": "Kyçuni",
+            "nav-order": "Porosit",
+            "hero-heading": "Rreth Pizza Paradise",
+            "title-story": "Historia Jonë",
+            "story-p1": "Pizza Paradise filloi me një ëndërr të thjeshtë: t'u sjellë pica autentike italiane të gjithëve.",
+            "story-p2": "Që nga hapja e restorantit tonë të parë, ne jemi fokusuar te përbërësit e freskët, shërbimi cilësor dhe shija e paimagjinueshme.",
+            "story-p3": "Sot ne shërbejmë mijëra klientë dhe vazhdojmë të zgjerohemi duke ruajtur përkushtimin tonë ndaj përsosmërisë.",
+            "mission-title": "Misioni Tonë",
+            "mission-desc": "Të ofrojmë përvojën më cilësore të picave përmes përbërësve të freskët, recetave novatore dhe shërbimit të jashtëzakonshëm ndaj klientit.",
+            "title-history": "Historia e Kompanisë",
+            "hist-1": "U themelua Pizza Paradise.",
+            "hist-2": "Arriti në 10,000 klientë të shërbyer.",
+            "hist-3": "U hapën disa degë të reja.",
+            "hist-4": "U lançua sistemi i porosive online.",
+            "hist-5": "U vlerësua si një nga markat kryesore të picave.",
+            "title-values": "Vlerat Tona",
+            "val1-t": "Cilësia",
+            "val1-d": "Vetëm përbërës premium.",
+            "val2-t": "Klienti i Pari",
+            "val2-d": "Kënaqësia juaj ka rëndësi.",
+            "val3-t": "Inovacioni",
+            "val3-d": "Shije dhe receta të reja.",
+            "val4-t": "Integriteti",
+            "val4-d": "Ndershmëri dhe transparencë.",
+            "title-team": "Njihuni me Ekipin Tonë",
+            "role-1": "Themelues & CEO",
+            "role-2": "Menaxhere e Operacioneve",
+            "role-3": "Kryekuzhinier",
+            "stat-1": "Vite Përvojë",
+            "stat-2": "Receta Picash",
+            "stat-3": "Klientë të Kënaqur",
+            "stat-4": "Çmime të Fituara",
+            "dark-btn": "Ndrysho Pamjen",
+            "footer-desc": "Pica e Freskët • Dërgesë e Shpejtë • Shije e Mahnitshme"
+        }
+    };
+
+    let currentLang = 'en';
+
+    function toggleLanguage() {
+        currentLang = currentLang === 'en' ? 'sq' : 'en';
+        document.querySelector('.lang-btn').textContent = currentLang === 'en' ? 'Shqip' : 'English';
+        document.documentElement.lang = currentLang;
+        
+        document.querySelectorAll('[data-key]').forEach(elem => {
+            const key = elem.getAttribute('data-key');
+            if (translations[currentLang][key]) {
+                elem.textContent = translations[currentLang][key];
+            }
+        });
+    }
+
+    function toggleDarkMode(){
+        document.body.classList.toggle("dark");
+    }
+</script>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#c62828">
+</body>
+</html>
